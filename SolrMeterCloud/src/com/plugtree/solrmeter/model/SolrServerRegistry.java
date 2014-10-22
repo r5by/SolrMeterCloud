@@ -53,7 +53,9 @@ public class SolrServerRegistry {
 //			servers.put(url, httpServer);
 //			return httpServer;
 			
-			CloudSolrServer httpServer = new CloudSolrServer("localhost:9983");
+//			CloudSolrServer httpServer = new CloudSolrServer("localhost:9983");
+//			CloudSolrServer httpServer = new CloudSolrServer("192.168.1.139:9983");
+			CloudSolrServer httpServer = new CloudSolrServer("129.107.126.14:9983");
 			httpServer.setDefaultCollection("collection1");
 			servers.put(url, httpServer);
 			return httpServer;

@@ -9,14 +9,25 @@ public class Util {
 //	Fields
 //----------------------------
 	
-	public static final int TOTAL_QUERIES_PER_CLIENT = 1000;
+	/* Fixed number of queries each client can send -- impl 0 */
+//	public static final int TOTAL_QUERIES_PER_CLIENT = 1000;
+	
+	/* Fixed number of queries that all clients can send -- impl 1 */
+	/* TODO: Let sending queries follow poisson dist. */
+	public static final int TOTAL_QUERIES = 60000;
+	
 //	private static long startTime, endTime;
 	public final static long ITERVAL = 0;
 	
-	public static final int SECTIONTIME = 1000;
+//	public static final int SECTIONTIME = 2000;
 	
 //	public static final int NUMBER_OF_CLIENTS = 5;
-	public static final int[] clientSizePool = new int[]{1, 2, 3, 4, 5, 10, 20, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100};
+	public static final int[] clientSizePool = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100};
+//	public static final int[] clientSizePool = new int[]{1, 50};
+
+	
+	
+//	public static final int[] clientSizePool = new int[]{2};
 	
 	/* Used for generating mixed queries */
 	public static final String QWORD_1 = "briefly";
@@ -35,13 +46,21 @@ public class Util {
 	/* Return average double of an arraylist<Double> */
 	public static double calcAverage(int startIndex, ArrayList<Double> pArray) {
 		double result = 0;
+		int cnt = 0;
 		
 		// Discard the records before startIndex
 		for (int i = startIndex; i < pArray.size(); i++) {
-			result+= pArray.get(i);
+//			result+= pArray.get(i);
+			
+			if(pArray.get(i)!=0) {
+				result+=pArray.get(i);
+				cnt++;
+			}
+			
 		}
 		
-		result/=(pArray.size()-startIndex);
+//		result/=(pArray.size()-startIndex);
+		result/=cnt;
 		return result;
 	}
 	

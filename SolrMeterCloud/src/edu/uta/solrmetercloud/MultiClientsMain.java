@@ -36,7 +36,7 @@ public class MultiClientsMain extends QueryServiceSolrJImpl {
 		ExecutorService taskExecutor = Executors.newFixedThreadPool(pNumberOfClients);
 
 		for (int i = 0; i < pNumberOfClients; i++) {		
-			taskExecutor.execute(new ResearchSolrClient(Integer.toString(i)));
+			taskExecutor.execute(new ResearchSolrClient(Integer.toString(i), pNumberOfClients));
 		}
 		taskExecutor.shutdown();
 		try {
